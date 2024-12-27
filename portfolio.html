@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Zwanski Store</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .project-card {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <header class="bg-white shadow-md">
+        <nav class="container mx-auto px-6 py-3">
+            <div class="flex justify-between items-center">
+                <a href="/" class="text-xl font-bold text-gray-800">Zwanski Store</a>
+                <div class="flex space-x-4">
+                    <a href="index.html" class="text-gray-800 hover:text-blue-600">Home</a>
+                    <a href="services.html" class="text-gray-800 hover:text-blue-600">Services</a>
+                    <a href="portfolio.html" class="text-blue-600 font-semibold">Portfolio</a>
+                    <a href="contact.html" class="text-gray-800 hover:text-blue-600">Contact</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-8">
+        <h1 class="text-4xl font-bold text-center mb-12">Portfolio</h1>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="project-card bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="https://via.placeholder.com/600x400" alt="Project 1" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h2 class="text-xl font-semibold mb-2">E-commerce Platform</h2>
+                    <p class="text-gray-600 mb-4">A modern e-commerce platform built with React and Next.js</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">React</span>
+                        <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Next.js</span>
+                        <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Stripe</span>
+                    </div>
+                    <a href="#" class="text-blue-600 hover:underline">View Project</a>
+                </div>
+            </div>
+            
+            <div class="project-card bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="https://via.placeholder.com/600x400" alt="Project 2" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h2 class="text-xl font-semibold mb-2">Cybersecurity Dashboard</h2>
+                    <p class="text-gray-600 mb-4">A real-time dashboard for monitoring security threats</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Vue.js</span>
+                        <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">D3.js</span>
+                        <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">WebSockets</span>
+                    </div>
+                    <a href="#" class="text-blue-600 hover:underline">View Project</a>
+                </div>
+            </div>
+            
+            <div class="project-card bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="https://via.placeholder.com/600x400" alt="Project 3" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h2 class="text-xl font-semibold mb-2">Mobile Fitness App</h2>
+                    <p class="text-gray-600 mb-4">A cross-platform fitness tracking application</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">React Native</span>
+                        <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Firebase</span>
+                        <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">HealthKit</span>
+                    </div>
+                    <a href="#" class="text-blue-600 hover:underline">View Project</a>
+                </div>
+            </div>
+            
+            <div class="project-card bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="https://via.placeholder.com/600x400" alt="Project 4" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h2 class="text-xl font-semibold mb-2">AI-powered Chatbot</h2>
+                    <p class="text-gray-600 mb-4">An intelligent chatbot for customer support</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Python</span>
+                        <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">TensorFlow</span>
+                        <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">NLP</span>
+                    </div>
+                    <a href="#" class="text-blue-600 hover:underline">View Project</a>
+                </div>
+            </div>
+            
+            <div class="project-card bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="https://via.placeholder.com/600x400" alt="Project 5" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h2 class="text-xl font-semibold mb-2">Blockchain Voting System</h2>
+                    <p class="text-gray-600 mb-4">A secure and transparent voting system using blockchain</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Solidity</span>
+                        <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Ethereum</span>
+                        <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Web3.js</span>
+                    </div>
+                    <a href="#" class="text-blue-600 hover:underline">View Project</a>
+                </div>
+            </div>
+            
+            <div class="project-card bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="https://via.placeholder.com/600x400" alt="Project 6" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h2 class="text-xl font-semibold mb-2">IoT Smart Home System</h2>
+                    <p class="text-gray-600 mb-4">A comprehensive IoT solution for smart home automation</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Raspberry Pi</span>
+                        <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">MQTT</span>
+                        <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Node-RED</span>
+                    </div>
+                    <a href="#" class="text-blue-600 hover:underline">View Project</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <p>&copy; 2024 Zwanski Store. All rights reserved.</p>
+                <div class="flex space-x-4 mt-4 md:mt-0">
+                    <a href="https://www.linkedin.com/in/zwanski/" target="_blank" rel="noopener noreferrer" class="hover:text-blue-400">LinkedIn</a>
+                    <a href="https://github.com/zwanski2019" target="_blank" rel="noopener noreferrer" class="hover:text-blue-400">GitHub</a>
+                    <a href="https://www.instagram.com/mohamed_zwanski/" target="_blank" rel="noopener noreferrer" class="hover:text-blue-400">Instagram</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const projectCards = document.querySelectorAll('.project-card');
+            projectCards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.transform = 'scale(1.05)';
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'scale(1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

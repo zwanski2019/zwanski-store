@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - Zwanski Store</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .service-card {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        .tag {
+            transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+        }
+        .tag:hover {
+            background-color: #3b82f6;
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <header class="bg-white shadow-md">
+        <nav class="container mx-auto px-6 py-3">
+            <div class="flex justify-between items-center">
+                <a href="/" class="text-xl font-bold text-gray-800">Zwanski Store</a>
+                <div class="flex space-x-4">
+                    <a href="index.html" class="text-gray-800 hover:text-blue-600">Home</a>
+                    <a href="services.html" class="text-blue-600 font-semibold">Services</a>
+                    <a href="portfolio.html" class="text-gray-800 hover:text-blue-600">Portfolio</a>
+                    <a href="contact.html" class="text-gray-800 hover:text-blue-600">Contact</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-8">
+        <h1 class="text-4xl font-bold text-center mb-12">Our Services</h1>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="service-card bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="p-6">
+                    <h2 class="text-2xl font-semibold mb-2">Frontend Development</h2>
+                    <p class="text-gray-600 mb-4">Modern web applications built with React, Next.js, and cutting-edge technologies</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="tag px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">React</span>
+                        <span class="tag px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Next.js</span>
+                        <span class="tag px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">TypeScript</span>
+                        <span class="tag px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Tailwind CSS</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="service-card bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="p-6">
+                    <h2 class="text-2xl font-semibold mb-2">Cyber Security</h2>
+                    <p class="text-gray-600 mb-4">Comprehensive security solutions to protect your digital assets</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="tag px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Security Audits</span>
+                        <span class="tag px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Penetration Testing</span>
+                        <span class="tag px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Security Training</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="service-card bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="p-6">
+                    <h2 class="text-2xl font-semibold mb-2">Custom Solutions</h2>
+                    <p class="text-gray-600 mb-4">Tailored development services to meet your specific needs</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="tag px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">API Development</span>
+                        <span class="tag px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">System Integration</span>
+                        <span class="tag px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Automation</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="service-card bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="p-6">
+                    <h2 class="text-2xl font-semibold mb-2">Mobile App Development</h2>
+                    <p class="text-gray-600 mb-4">Create cross-platform mobile applications for iOS and Android</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="tag px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">React Native</span>
+                        <span class="tag px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Flutter</span>
+                        <span class="tag px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">iOS</span>
+                        <span class="tag px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Android</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="service-card bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="p-6">
+                    <h2 class="text-2xl font-semibold mb-2">UI/UX Design</h2>
+                    <p class="text-gray-600 mb-4">Create intuitive and visually appealing user interfaces</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="tag px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Figma</span>
+                        <span class="tag px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Adobe XD</span>
+                        <span class="tag px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Sketch</span>
+                        <span class="tag px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Prototyping</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="service-card bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="p-6">
+                    <h2 class="text-2xl font-semibold mb-2">DevOps & Cloud Services</h2>
+                    <p class="text-gray-600 mb-4">Streamline development and deployment processes</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="tag px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">AWS</span>
+                        <span class="tag px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Docker</span>
+                        <span class="tag px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Kubernetes</span>
+                        <span class="tag px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">CI/CD</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <p>&copy; 2024 Zwanski Store. All rights reserved.</p>
+                <div class="flex space-x-4 mt-4 md:mt-0">
+                    <a href="https://www.linkedin.com/in/zwanski/" target="_blank" rel="noopener noreferrer" class="hover:text-blue-400">LinkedIn</a>
+                    <a href="https://github.com/zwanski2019" target="_blank" rel="noopener noreferrer" class="hover:text-blue-400">GitHub</a>
+                    <a href="https://www.instagram.com/mohamed_zwanski/" target="_blank" rel="noopener noreferrer" class="hover:text-blue-400">Instagram</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const serviceCards = document.querySelectorAll('.service-card');
+            serviceCards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.transform = 'scale(1.05)';
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'scale(1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
