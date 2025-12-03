@@ -8,7 +8,7 @@
     "build": "vite build && vite build --outDir dist",
     "preview": "vite preview --port 5173",
     "format": "prettier --write .",
-    "deploy": "npm run build && npx gh-pages -d dist",
+    "deploy": "npm run build && cp -f dist/index.html dist/404.html && npx gh-pages -d dist",
     "generate-feed": "node scripts/generate-merchant-feed.js",
     "prepare-netlify": "echo \"Set STRIPE_SECRET_KEY in Netlify env vars\""
   },

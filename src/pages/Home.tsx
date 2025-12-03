@@ -17,7 +17,21 @@ export default function Home(){
       <section className='bg-gradient-to-r from-zwanski-mid to-zwanski-cyan text-white rounded-lg p-8 mb-8'>
         <div className='container mx-auto'>
           <h1 className='text-4xl font-bold'>Zwanski Tech</h1>
-          <p className='mt-3 max-w-2xl'>We help small businesses and startups build fast, secure, and search-optimized digital experiences. From modern websites to security audits and managed IT support — we bring reliability and performance together.</p>
+          <p className='mt-3 max-w-2xl'>We help small businesses and startups build fast, secure, and search-optimized digital experiences. From modern websites and e-commerce to device services, antivirus licensing, and cloud backup — professional solutions priced in USD.</p>
+          <div className='mt-4 grid sm:grid-cols-3 gap-4'>
+            <div>
+              <h4 className='font-semibold'>Web & E‑commerce</h4>
+              <p className='text-sm'>Modern React + Tailwind websites, conversion-first design, fast builds.</p>
+            </div>
+            <div>
+              <h4 className='font-semibold'>Mobile Services</h4>
+              <p className='text-sm'>IMEI unlock, carrier unlocks, provisioning and device tools for Android & iPhone.</p>
+            </div>
+            <div>
+              <h4 className='font-semibold'>Security & Tools</h4>
+              <p className='text-sm'>Cloud antivirus, backups, optimization tools and managed IT support.</p>
+            </div>
+          </div>
           <div className='mt-6 flex gap-3'>
             <Link to='/services' className='bg-white text-zwanski-mid px-4 py-2 rounded shadow'>Our Services</Link>
             <Link to='/shop' className='bg-transparent border border-white px-4 py-2 rounded'>Shop</Link>
