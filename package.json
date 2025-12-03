@@ -1,0 +1,30 @@
+{
+  "name": "zwanski-store",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Zwanski Tech - Static eCommerce storefront (Vite + React + TypeScript + Tailwind) - GitHub Pages ready",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && vite build --outDir dist",
+    "preview": "vite preview --port 5173",
+    "format": "prettier --write .",
+    "deploy": "npm run build && npx gh-pages -d dist",
+    "generate-feed": "node scripts/generate-merchant-feed.js",
+    "prepare-netlify": "echo \"Set STRIPE_SECRET_KEY in Netlify env vars\""
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.21.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.2.2",
+    "vite": "^5.3.0",
+    "@vitejs/plugin-react": "^4.0.0",
+    "tailwindcss": "^4.3.0",
+    "postcss": "^8.4.21",
+    "autoprefixer": "^10.4.14",
+    "gh-pages": "^5.0.0",
+    "prettier": "^2.8.8"
+  }
+}

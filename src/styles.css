@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* basic dark mode */
+:root { color-scheme: light; }
+@media (prefers-color-scheme: dark) {
+  :root { color-scheme: dark; }
+}

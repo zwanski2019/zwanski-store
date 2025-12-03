@@ -1,0 +1,22 @@
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { useCart } from '../context/CartContext'
+
+export default function ProductCard({product}:{product:any}){
+  const cart = useCart()
+  const handleAdd = ()=> {
+    cart.add({ id: product.id, title: product.title, price: Number(product.price) }, 1)
+    alert(product.title + " added to cart")
+  }
+  return (
+    <div className='border rounded p-4 flex flex-col'>
+      <img src={product.image || '/placeholder.png'} alt={product.title} className='h-40 object-contain mb-4' />
+      <h3 className='font-semibold'>{product.title}</h3>
+      <p className='mt-2 flex-grow'>{product.description}</p>
+      <div className='mt-4 flex items-center justify-between'>
+        <span className='font-bold'>${product.price.toFixed(2)}</span>
+        <button onClick={handleAdd} className='bg-indigo-600 text-white px-3 py-1 rounded'>Add</button>
+      </div>
+    </div>
+  )
+}
