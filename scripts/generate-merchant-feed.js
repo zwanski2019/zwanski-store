@@ -5,6 +5,7 @@
 const fs = require('fs')
 const path = require('path')
 const productsPath = path.join(__dirname, '..', 'public', 'products.json')
+const brandPath = path.join(__dirname, '..', 'public', 'brand.json')
 const outPath = path.join(__dirname, '..', 'public', 'merchant-feed.xml')
 
 function escapeXml(unsafe) {
@@ -17,15 +18,17 @@ function escapeXml(unsafe) {
 }
 
 const products = JSON.parse(fs.readFileSync(productsPath, 'utf8'))
+const brand = JSON.parse(fs.readFileSync(brandPath, 'utf8'))
 let items = products.map(p => `  <item>
     <g:id>${escapeXml(p.id)}</g:id>
     <title>${escapeXml(p.title)}</title>
     <description>${escapeXml(p.description)}</description>
-    <g:link>https://your-domain.com/shop</g:link>
+    <g:link>${escapeXml(brand.url.replace(/\/$/, '') + '/product/' + p.id)}</g:link>
     <g:condition>new</g:condition>
     <g:availability>in stock</g:availability>
     <g:price>${Number(p.price).toFixed(2)} USD</g:price>
-    <g:brand>Zwanski Tech</g:brand>
+    <g:brand>${escapeXml(brand.name || 'Zwanski Tech')}</g:brand>
+    ${p.image ? `<g:image_link>${escapeXml(brand.url.replace(/\/$/, '') + p.image)}</g:image_link>` : ''}
   </item>`).join('\n')
 
 const xml = `<?xml version="1.0" encoding="UTF-8"?>

@@ -16,12 +16,20 @@ export default function Cart(){
       <div className='space-y-4'>
         {cart.items.map(i=> (
           <div key={i.id} className='flex items-center justify-between border rounded p-4'>
-            <div>
-              <div className='font-semibold'>{i.title}</div>
-              <div className='text-sm text-gray-600'>Qty: {i.quantity}</div>
+            <div className='flex items-center gap-4'>
+              <img src={`/images/${i.id}.svg`} alt={i.title} className='w-20 h-20 object-contain' onError={(e:any)=> e.target.src='/placeholder.png'} />
+              <div>
+                <div className='font-semibold'>{i.title}</div>
+                <div className='text-sm text-gray-600'>${i.price.toFixed(2)} each</div>
+              </div>
             </div>
             <div className='text-right'>
-              <div className='font-bold'>${(i.price * i.quantity).toFixed(2)}</div>
+              <div className='flex items-center gap-2 justify-end'>
+                <button onClick={()=>cart.update(i.id, i.quantity - 1)} className='px-2 py-1 border rounded'>−</button>
+                <div className='px-3'>{i.quantity}</div>
+                <button onClick={()=>cart.update(i.id, i.quantity + 1)} className='px-2 py-1 border rounded'>+</button>
+              </div>
+              <div className='font-bold mt-2'>${(i.price * i.quantity).toFixed(2)}</div>
               <button onClick={()=>cart.remove(i.id)} className='text-sm mt-2 text-red-600'>Remove</button>
             </div>
           </div>

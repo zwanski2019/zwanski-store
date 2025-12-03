@@ -11,6 +11,7 @@ type CartContextValue = {
   items: CartItem[];
   add: (item: Omit<CartItem,'quantity'>, qty?: number) => void;
   remove: (id: string) => void;
+  update: (id: string, quantity: number) => void;
   clear: () => void;
   total: () => number;
 }
@@ -45,9 +46,13 @@ export const CartProvider: React.FC<{children:React.ReactNode}> = ({children}) =
     })
   }
 
+  const update = (id:string, quantity:number) => {
+    setItems(prev => prev.map(p => p.id === id ? {...p, quantity: Math.max(0, quantity)} : p).filter(p=> p.quantity > 0))
+  }
+
   const remove = (id:string) => setItems(prev=> prev.filter(p=>p.id!==id))
   const clear = () => setItems([])
   const total = () => items.reduce((s,i)=> s + i.price * i.quantity, 0)
 
-  return <CartContext.Provider value={{items, add, remove, clear, total}}>{children}</CartContext.Provider>
+  return <CartContext.Provider value={{items, add, remove, update, clear, total}}>{children}</CartContext.Provider>
 }
