@@ -14,7 +14,9 @@ export default function Header(){
         </Link>
         <nav className='space-x-4'>
           <Link to='/shop' className='hover:underline'>Shop</Link>
+          <Link to='/services' className='hover:underline'>Services</Link>
           <Link to='/academy' className='hover:underline'>Academy</Link>
+          <Link to='/faq' className='hover:underline'>FAQ</Link>
           <Link to='/about' className='hover:underline'>About</Link>
           <Link to='/contact' className='hover:underline'>Contact</Link>
           <Link to='/cart' className='hover:underline'>Cart ({count})</Link>
