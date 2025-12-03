@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Sitemap: https://zwanski.org/sitemap.xml
+Sitemap: https://zwanski.org/privacy-policy.html
+Sitemap: https://zwanski.org/terms.html
+Sitemap: https://zwanski.org/cookie-policy.html
+Sitemap: https://zwanski.org/refund-policy.html
