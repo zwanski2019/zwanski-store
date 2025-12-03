@@ -35,12 +35,22 @@ export default function SEO({ title, description, image, url }: Props) {
     if (title) setProperty('og:title', title)
     if (description) setProperty('og:description', description)
     if (url) setProperty('og:url', url)
-    if (image) setProperty('og:image', image)
+    // Resolve image paths so they work with Vite base when deployed to GitHub Pages
+    let resolvedImage: string | undefined = undefined
+    if (image) {
+      if (/^https?:/.test(image)) resolvedImage = image
+      else {
+        const base = (import.meta as any).env?.BASE_URL || '/'
+        resolvedImage = base + image.replace(/^\//, '')
+      }
+    }
+
+    if (resolvedImage) setProperty('og:image', resolvedImage)
     setProperty('og:type', 'website')
     setMeta('twitter:card', 'summary_large_image')
     if (title) setMeta('twitter:title', title)
     if (description) setMeta('twitter:description', description)
-    if (image) setMeta('twitter:image', image)
+    if (resolvedImage) setMeta('twitter:image', resolvedImage)
   }, [title, description, image, url])
 
   return null

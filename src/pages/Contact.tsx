@@ -27,7 +27,7 @@ export default function Contact(){
       <h1 className='text-2xl font-bold mb-4'>Contact</h1>
       <div className='grid md:grid-cols-2 gap-6'>
         <div>
-          <p className='mb-2'>Email: <a href='mailto:contact@zwanski.org' className='text-indigo-600'>contact@zwanski.org</a></p>
+          <p className='mb-2'>Email: <a href='mailto:contact@zwanski.org' className='text-zwanski-blue'>contact@zwanski.org</a></p>
           <p>Phone: Not available</p>
           <div className='mt-6 border rounded p-4'>
             <div className='mb-2 font-semibold'>Office</div>
@@ -56,7 +56,7 @@ export default function Contact(){
                 <textarea className='w-full border rounded px-3 py-2' value={message} onChange={e=>setMessage(e.target.value)} rows={6} required />
               </div>
               <div>
-                <button className='bg-indigo-600 text-white px-4 py-2 rounded'>Send Message</button>
+                <button className='bg-zwanski-blue text-white px-4 py-2 rounded'>Send Message</button>
               </div>
             </form>
           )}

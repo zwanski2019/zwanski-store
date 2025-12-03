@@ -9,7 +9,7 @@ export default function Cart(){
     <div>
       <SEO title="Cart" description="Your shopping cart at Zwanski Tech" image={'/logo.svg'} url={'https://zwanski01.github.io/zwanski-store/cart'} />
       <h1 className='text-2xl font-bold mb-4'>Cart</h1>
-      <p>Your cart is empty. <Link to='/shop' className='text-indigo-600'>Shop now</Link></p>
+      <p>Your cart is empty. <Link to='/shop' className='text-zwanski-blue'>Shop now</Link></p>
     </div>
   )
   return (
@@ -19,7 +19,7 @@ export default function Cart(){
         {cart.items.map(i=> (
           <div key={i.id} className='flex items-center justify-between border rounded p-4'>
             <div className='flex items-center gap-4'>
-              <img src={`/images/${i.id}.svg`} alt={i.title} className='w-20 h-20 object-contain' onError={(e:any)=> e.target.src='/placeholder.png'} />
+              <img src={`${(import.meta as any).env?.BASE_URL || '/'}images/${i.id}.svg`.replace(/\/\//g,'/')} alt={i.title} className='w-20 h-20 object-contain' onError={(e:any)=> e.target.src = ((import.meta as any).env?.BASE_URL || '/') + 'placeholder.png'} />
               <div>
                 <div className='font-semibold'>{i.title}</div>
                 <div className='text-sm text-gray-600'>${i.price.toFixed(2)} each</div>
@@ -40,7 +40,7 @@ export default function Cart(){
       <div className='mt-6 flex items-center justify-between'>
         <div className='text-xl font-bold'>Total: ${cart.total().toFixed(2)}</div>
         <div className='space-x-3'>
-          <Link to='/checkout' className='bg-indigo-600 text-white px-4 py-2 rounded'>Go to Checkout</Link>
+          <Link to='/checkout' className='bg-zwanski-blue text-white px-4 py-2 rounded'>Go to Checkout</Link>
         </div>
       </div>
     </div>

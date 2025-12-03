@@ -10,15 +10,18 @@ export default function Shop(){
   const [category, setCategory] = useState('all')
 
   useEffect(()=>{
-    fetch('/products.json').then(r=>r.json()).then(setProducts).catch(()=>setProducts([]))
+    const base = (import.meta as any).env?.BASE_URL || '/'
+    fetch(base + 'products.json').then(r=>r.json()).then(setProducts).catch(()=>setProducts([]))
   },[])
 
   const categories = Array.from(new Set(['all', ...products.map(p=> p.category || 'other')]))
   const shown = products.filter(p=> (category==='all' || (p.category||'other') === category) && (q === '' || (p.title + ' ' + p.description).toLowerCase().includes(q.toLowerCase())))
 
+  const base = (import.meta as any).env?.BASE_URL || '/'
+
   return (
     <div>
-      <SEO title="Shop" description="Browse Zwanski Tech services and digital products — web development, SEO, security audits, IT support, and tools." image={'/logo.svg'} url={'https://zwanski01.github.io/zwanski-store/shop'} />
+      <SEO title="Shop" description="Browse Zwanski Tech services and digital products — web development, SEO, security audits, IT support, and tools." image={`${base}logo.svg`.replace(/\/\//g,'/')} url={'https://zwanski01.github.io/zwanski-store/shop'} />
       <h1 className='text-2xl font-bold mb-4'>Shop</h1>
 
       <div className='mb-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3'>

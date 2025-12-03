@@ -7,18 +7,19 @@ type Product = { id:string; title:string; price:number; description:string; imag
 export default function Home(){
   const [featured, setFeatured] = useState<Product[]>([])
   useEffect(()=>{
-    fetch('/products.json').then(r=>r.json()).then((list:Product[])=> setFeatured(list.slice(0,3))).catch(()=>setFeatured([]))
+    const base = (import.meta as any).env?.BASE_URL || '/'
+    fetch(base + 'products.json').then(r=>r.json()).then((list:Product[])=> setFeatured(list.slice(0,3))).catch(()=>setFeatured([]))
   },[])
 
   return (
     <div>
-      <SEO title="Home" description="Zwanski Tech — web development, SEO, cybersecurity and IT support for small businesses and startups." image={'/logo.svg'} url={'https://zwanski01.github.io/zwanski-store/'} />
-      <section className='bg-gradient-to-r from-indigo-600 to-sky-500 text-white rounded-lg p-8 mb-8'>
+      <SEO title="Home" description="Zwanski Tech — web development, SEO, cybersecurity and IT support for small businesses and startups." image={`${(import.meta as any).env?.BASE_URL || '/'}logo.svg`.replace(/\/\//g,'/')} url={'https://zwanski01.github.io/zwanski-store/'} />
+      <section className='bg-gradient-to-r from-zwanski-mid to-zwanski-cyan text-white rounded-lg p-8 mb-8'>
         <div className='container mx-auto'>
           <h1 className='text-4xl font-bold'>Zwanski Tech</h1>
           <p className='mt-3 max-w-2xl'>We help small businesses and startups build fast, secure, and search-optimized digital experiences. From modern websites to security audits and managed IT support — we bring reliability and performance together.</p>
           <div className='mt-6 flex gap-3'>
-            <Link to='/services' className='bg-white text-indigo-700 px-4 py-2 rounded shadow'>Our Services</Link>
+            <Link to='/services' className='bg-white text-zwanski-mid px-4 py-2 rounded shadow'>Our Services</Link>
             <Link to='/shop' className='bg-transparent border border-white px-4 py-2 rounded'>Shop</Link>
           </div>
         </div>
@@ -30,13 +31,13 @@ export default function Home(){
           {featured.map(p=> (
             <div key={p.id} className='p-4 border rounded-lg hover:shadow-lg transition'>
               <Link to={`/product/${p.id}`}>
-                <img src={p.image || '/placeholder.png'} alt={p.title} className='h-40 w-full object-contain mb-3' />
+                <img src={p.image ? ((import.meta as any).env?.BASE_URL || '/') + p.image.replace(/^\//, '') : ((import.meta as any).env?.BASE_URL || '/') + 'placeholder.png'} alt={p.title} className='h-40 w-full object-contain mb-3' />
                 <h3 className='font-semibold'>{p.title}</h3>
               </Link>
               <p className='text-sm text-gray-600 mt-2'>{p.description}</p>
               <div className='mt-4 flex items-center justify-between'>
                 <div className='font-bold'>${p.price.toFixed(2)}</div>
-                <Link to={`/product/${p.id}`} className='text-indigo-600'>View</Link>
+                <Link to={`/product/${p.id}`} className='text-zwanski-blue'>View</Link>
               </div>
             </div>
           ))}

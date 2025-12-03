@@ -6,10 +6,10 @@ export default function Header(){
   const cart = useCart()
   const count = cart.items.reduce((s,i)=> s + i.quantity, 0)
   return (
-    <header className='bg-gradient-to-r from-indigo-700 to-sky-500 text-white'>
+    <header className='bg-gradient-to-r from-zwanski-mid to-zwanski-cyan text-white'>
       <div className='container mx-auto flex items-center justify-between p-4'>
         <Link to='/' className='flex items-center gap-3'>
-          <img src='/placeholder.png' alt='logo' className='h-8 w-8 rounded' />
+          <img src={`${(import.meta as any).env?.BASE_URL || '/'}logo.svg`.replace(/\/\//g,'/')} alt='logo' className='h-8 w-8 rounded' />
           <span className='text-xl font-bold'>Zwanski Tech</span>
         </Link>
         <nav className='space-x-4'>

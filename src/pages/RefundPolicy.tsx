@@ -15,7 +15,7 @@ export default function RefundPolicy(){
       <section className='mt-4'>
         <h3 className='font-semibold'>How to Request a Refund</h3>
         <ol className='list-decimal ml-6 text-gray-700 mt-2'>
-          <li>Contact <a href='mailto:contact@zwanski.org' className='text-indigo-600'>contact@zwanski.org</a> with your order details.</li>
+          <li>Contact <a href='mailto:contact@zwanski.org' className='text-zwanski-blue'>contact@zwanski.org</a> with your order details.</li>
           <li>We will acknowledge within 5 business days and review the request.</li>
           <li>If approved, refunds will be processed via the original payment method.</li>
         </ol>

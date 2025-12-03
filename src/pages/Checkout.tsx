@@ -39,7 +39,7 @@ export default function Checkout(){
       <h1 className='text-2xl font-bold mb-4'>Checkout</h1>
       <p className='mb-4'>Total: <strong>${cart.total().toFixed(2)}</strong></p>
       {cart.items.length === 0 ? (
-        <div className='text-gray-600'>Your cart is empty. Add items in the <a className='text-indigo-600' href='/shop'>shop</a>.</div>
+        <div className='text-gray-600'>Your cart is empty. Add items in the <a className='text-zwanski-blue' href='/shop'>shop</a>.</div>
       ) : (
         <div className='space-y-4'>
           <div>
