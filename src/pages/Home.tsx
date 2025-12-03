@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import { Link } from 'react-router-dom'
 import SEO from '../components/SEO'
+import Counters from '../components/Counters'
 
 type Product = { id:string; title:string; price:number; description:string; image?:string }
 
@@ -14,7 +15,7 @@ export default function Home(){
   return (
     <div>
       <SEO title="Home" description="Zwanski Tech — web development, SEO, cybersecurity and IT support for small businesses and startups." image={`${(import.meta as any).env?.BASE_URL || '/'}logo.svg`.replace(/\/\//g,'/')} url={'https://zwanski01.github.io/zwanski-store/'} />
-      <section className='bg-gradient-to-r from-zwanski-mid to-zwanski-cyan text-white rounded-lg p-8 mb-8'>
+      <section className='bg-white text-zwanski-mid rounded-lg p-8 mb-8 shadow'>
         <div className='container mx-auto'>
           <h1 className='text-4xl font-bold'>Zwanski Tech</h1>
           <p className='mt-3 max-w-2xl'>We help small businesses and startups build fast, secure, and search-optimized digital experiences. From modern websites and e-commerce to device services, antivirus licensing, and cloud backup — professional solutions priced in USD.</p>
@@ -43,7 +44,7 @@ export default function Home(){
         <h2 className='text-2xl font-semibold mb-4'>Featured Services & Products</h2>
         <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
           {featured.map(p=> (
-            <div key={p.id} className='p-4 border rounded-lg hover:shadow-lg transition'>
+            <div key={p.id} className='p-4 border rounded-lg hover:shadow-lg transition bg-white'>
               <Link to={`/product/${p.id}`}>
                 <img src={p.image ? ((import.meta as any).env?.BASE_URL || '/') + p.image.replace(/^\//, '') : ((import.meta as any).env?.BASE_URL || '/') + 'placeholder.png'} alt={p.title} className='h-40 w-full object-contain mb-3' />
                 <h3 className='font-semibold'>{p.title}</h3>
@@ -55,6 +56,16 @@ export default function Home(){
               </div>
             </div>
           ))}
+        </div>
+      </section>
+
+      <section className='container mx-auto'>
+        <h2 className='text-2xl font-semibold mb-4'>Our Impact</h2>
+        <div className='bg-white p-6 rounded shadow'>
+          <p className='text-gray-700'>We deliver enterprise-grade security and performance solutions with a practical, business-first approach. Below are some highlights of our reach and delivery.</p>
+          <div className='mt-6'>
+            <Counters />
+          </div>
         </div>
       </section>
 

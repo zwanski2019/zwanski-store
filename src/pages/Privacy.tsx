@@ -1,4 +1,5 @@
 import React from 'react'
+import SEO from '../components/SEO'
 export default function Privacy(){
   return (
     <div>
@@ -24,7 +25,13 @@ export default function Privacy(){
         <p className='text-gray-700 mt-2'>The demo includes the PayPal client SDK for browser-based checkout. When using real services, review their privacy policies. This static demo does not send data to third-party servers by default.</p>
       </section>
 
-      <p className='text-sm text-gray-600 mt-6'>This privacy statement is for demonstration only. For production use, create a privacy policy appropriate to your legal obligations.</p>
+      <h3 className='font-semibold mt-6'>GDPR & Data Subject Rights</h3>
+        <p className='text-gray-700 mt-2'>If you are located in the EU, you have certain rights under the GDPR. This includes the right to access, rectify, erase, restrict processing, and port your personal data. Because this demo stores data only in your browser by default, rights are exercised by clearing local data or contacting the site owner for exported copies where applicable.</p>
+
+        <h3 className='font-semibold mt-4'>CCPA / CPRA</h3>
+        <p className='text-gray-700 mt-2'>California residents have rights under the CCPA/CPRA including the right to know personal information collected, delete personal information, and opt-out of sale of personal information. This demo does not sell personal information.</p>
+
+        <p className='text-sm text-gray-600 mt-6'>This privacy statement is for demonstration only. For production use, create a privacy policy appropriate to your legal obligations and operational model.</p>
     </div>
   )
 }
