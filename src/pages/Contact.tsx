@@ -8,8 +8,16 @@ export default function Contact(){
 
   const submit = (e:React.FormEvent)=>{
     e.preventDefault()
-    // Client-side only: pretend to send and show confirmation
-    setSent(true)
+    // Client-side only: store message locally (demo) and show confirmation
+    try{
+      const existing = JSON.parse(localStorage.getItem('zwanski_messages_v1') || '[]')
+      existing.push({ name, email, message, date: new Date().toISOString() })
+      localStorage.setItem('zwanski_messages_v1', JSON.stringify(existing))
+      setSent(true)
+      setName(''); setEmail(''); setMessage('')
+    }catch(e){
+      alert('Unable to save message locally in this browser.')
+    }
   }
 
   return (

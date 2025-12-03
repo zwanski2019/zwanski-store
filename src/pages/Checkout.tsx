@@ -33,40 +33,22 @@ export default function Checkout(){
     return () => {}
   }, [])
 
-  const startStripe = async ()=>{
-    // call serverless endpoint to create Stripe Checkout Session
-    try {
-      const resp = await fetch('/api/create-checkout-session', {
-        method: 'POST',
-        headers: {'Content-Type':'application/json'},
-        body: JSON.stringify({items: cart.items})
-      })
-      const data = await resp.json()
-      if(data.url){
-        window.location.href = data.url
-      } else {
-        alert('Stripe session creation failed: ' + JSON.stringify(data))
-      }
-    } catch(e){
-      alert('Error contacting Stripe endpoint. Make sure you deploy functions and set STRIPE_SECRET_KEY.')
-    }
-  }
 
   return (
     <div>
       <h1 className='text-2xl font-bold mb-4'>Checkout</h1>
       <p className='mb-4'>Total: <strong>${cart.total().toFixed(2)}</strong></p>
-      <div className='space-y-4'>
-        <div>
-          <h2 className='font-semibold mb-2'>Pay with PayPal (Sandbox)</h2>
-          <div id='paypal-button-container'></div>
+      {cart.items.length === 0 ? (
+        <div className='text-gray-600'>Your cart is empty. Add items in the <a className='text-indigo-600' href='/shop'>shop</a>.</div>
+      ) : (
+        <div className='space-y-4'>
+          <div>
+            <h2 className='font-semibold mb-2'>Pay with PayPal (Sandbox)</h2>
+            <p className='text-sm text-gray-600 mb-2'>This checkout uses PayPal client-side buttons only. For testing, the demo uses PayPal sandbox. Replace the client id in `src/pages/Checkout.tsx` with your own PayPal client id when ready.</p>
+            <div id='paypal-button-container'></div>
+          </div>
         </div>
-        <div>
-          <h2 className='font-semibold mb-2'>Or pay with Stripe</h2>
-          <p>Stripe Checkout will open in a new tab/window. (Serverless example included for Vercel/Netlify)</p>
-          <button onClick={startStripe} className='bg-blue-600 text-white px-4 py-2 rounded'>Pay with Stripe</button>
-        </div>
-      </div>
+      )}
     </div>
   )
 }
