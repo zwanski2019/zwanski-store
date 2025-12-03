@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import { Link } from 'react-router-dom'
+import SEO from '../components/SEO'
 
 type Product = { id:string; title:string; price:number; description:string; image?:string }
 
@@ -11,6 +12,7 @@ export default function Home(){
 
   return (
     <div>
+      <SEO title="Home" description="Zwanski Tech — web development, SEO, cybersecurity and IT support for small businesses and startups." image={'/logo.svg'} url={'https://zwanski01.github.io/zwanski-store/'} />
       <section className='bg-gradient-to-r from-indigo-600 to-sky-500 text-white rounded-lg p-8 mb-8'>
         <div className='container mx-auto'>
           <h1 className='text-4xl font-bold'>Zwanski Tech</h1>

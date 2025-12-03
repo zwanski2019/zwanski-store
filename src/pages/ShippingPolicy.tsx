@@ -3,6 +3,7 @@ import React from 'react'
 export default function ShippingPolicy(){
   return (
     <div>
+      <SEO title="Shipping Policy" description="Shipping policy for Zwanski Tech products — most offerings are digital and delivered electronically." image={'/logo.svg'} url={'https://zwanski01.github.io/zwanski-store/shipping-policy'} />
       <h1 className='text-3xl font-bold mb-4'>Shipping Policy</h1>
       <p className='text-gray-700'>Most offerings on Zwanski Tech are digital services or downloadable licenses, and do not require physical shipping. For any physical goods (if offered), shipping costs and timelines will be disclosed at purchase.</p>
 

@@ -2,6 +2,7 @@ import React from 'react'
 export default function Privacy(){
   return (
     <div>
+      <SEO title="Privacy Policy" description="Zwanski Tech privacy policy — describes how the demo stores data locally and uses third-party SDKs like PayPal." image={'/logo.svg'} url={'https://zwanski01.github.io/zwanski-store/privacy'} />
       <h1 className='text-3xl font-bold mb-4'>Privacy Policy</h1>
       <p className='text-gray-700'>Effective date: December 3, 2025</p>
 

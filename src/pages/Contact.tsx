@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import SEO from '../components/SEO'
 
 export default function Contact(){
   const [name, setName] = useState('')
@@ -22,6 +23,7 @@ export default function Contact(){
 
   return (
     <div>
+      <SEO title="Contact" description="Contact Zwanski Tech — get in touch for web development, SEO, cybersecurity and IT support." image={'/logo.svg'} url={'https://zwanski01.github.io/zwanski-store/contact'} />
       <h1 className='text-2xl font-bold mb-4'>Contact</h1>
       <div className='grid md:grid-cols-2 gap-6'>
         <div>

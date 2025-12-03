@@ -1,4 +1,5 @@
 import React from 'react'
+import SEO from '../components/SEO'
 
 const SERVICES = [
   { id: 's1', title: 'Web Development', desc: 'Modern responsive websites with React and performance-first architecture.' },
@@ -11,6 +12,7 @@ const SERVICES = [
 export default function Services(){
   return (
     <div>
+      <SEO title="Services" description="Zwanski Tech services: Web Development, SEO, Cybersecurity, IT Support, and Performance Optimization." image={'/logo.svg'} url={'https://zwanski01.github.io/zwanski-store/services'} />
       <h1 className='text-3xl font-bold mb-4'>Services</h1>
       <div className='space-y-6'>
         <div className='p-6 border rounded-lg shadow-sm'>

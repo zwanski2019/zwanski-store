@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { useCart } from '../context/CartContext'
+import SEO from '../components/SEO'
 
 type Product = { id:string; title:string; price:number; description:string; image?:string }
 
@@ -26,6 +27,7 @@ export default function ProductPage(){
 
   return (
     <div>
+      <SEO title={product.title} description={product.description} image={product.image || '/logo.svg'} url={typeof window !== 'undefined' ? `${window.location.origin}/product/${product.id}` : '/product/' + product.id} />
       <div className='grid md:grid-cols-2 gap-6'>
         <div>
           <img src={product.image || '/placeholder.png'} alt={product.title} className='w-full h-80 object-contain rounded' />

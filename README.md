@@ -47,12 +47,13 @@ Notes
 - Privacy / Terms are templates. **Do not publish without legal review** for your country.
 
 ## Customize
-- Replace logo and contact info in `src/components/Header.tsx` and `src/pages/Contact.tsx`.
-- Edit `public/products.json` with your real products.
 
 
 
 ## Serverless Stripe example (optional)
+
+## CI / Automatic deploy
+- A GitHub Actions workflow `/.github/workflows/deploy-pages.yml` will build and deploy the site to GitHub Pages automatically when you push to `main`. The workflow uses the built-in `GITHUB_TOKEN` so no extra secrets are required for publishing to Pages.
 
 The repository includes optional example serverless functions for Stripe in `vercel/` and `netlify/` as a reference. These are not required for the static GitHub Pages deployment and will not function unless you deploy them and configure secret keys.
 

@@ -1,11 +1,13 @@
 import React from 'react'
 import { useCart } from '../context/CartContext'
 import { Link } from 'react-router-dom'
+import SEO from '../components/SEO'
 
 export default function Cart(){
   const cart = useCart()
   if(cart.items.length === 0) return (
     <div>
+      <SEO title="Cart" description="Your shopping cart at Zwanski Tech" image={'/logo.svg'} url={'https://zwanski01.github.io/zwanski-store/cart'} />
       <h1 className='text-2xl font-bold mb-4'>Cart</h1>
       <p>Your cart is empty. <Link to='/shop' className='text-indigo-600'>Shop now</Link></p>
     </div>

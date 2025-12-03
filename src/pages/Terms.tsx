@@ -2,6 +2,7 @@ import React from 'react'
 export default function Terms(){
   return (
     <div>
+      <SEO title="Terms & Conditions" description="Terms and conditions for using the Zwanski Tech demo storefront." image={'/logo.svg'} url={'https://zwanski01.github.io/zwanski-store/terms'} />
       <h1 className='text-3xl font-bold mb-4'>Terms & Conditions</h1>
       <p className='text-gray-700'>These terms govern the use of the Zwanski Tech demo storefront. This site is a static demo intended to show a client-side store and does not represent a final production commerce agreement.</p>
 

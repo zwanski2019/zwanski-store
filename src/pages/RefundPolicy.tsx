@@ -3,6 +3,7 @@ import React from 'react'
 export default function RefundPolicy(){
   return (
     <div>
+      <SEO title="Refund Policy" description="Refund policy for Zwanski Tech digital services and products." image={'/logo.svg'} url={'https://zwanski01.github.io/zwanski-store/refund-policy'} />
       <h1 className='text-3xl font-bold mb-4'>Refund Policy</h1>
       <p className='text-gray-700'>Effective date: December 3, 2025</p>
 

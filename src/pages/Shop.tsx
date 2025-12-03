@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import ProductCard from '../components/ProductCard'
+import SEO from '../components/SEO'
 
 type Product = { id:string; title:string; price:number; description:string; image?:string; category?:string }
 
@@ -17,6 +18,7 @@ export default function Shop(){
 
   return (
     <div>
+      <SEO title="Shop" description="Browse Zwanski Tech services and digital products — web development, SEO, security audits, IT support, and tools." image={'/logo.svg'} url={'https://zwanski01.github.io/zwanski-store/shop'} />
       <h1 className='text-2xl font-bold mb-4'>Shop</h1>
 
       <div className='mb-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3'>

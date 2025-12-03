@@ -3,6 +3,7 @@ import React from 'react'
 export default function CookiesPolicy(){
   return (
     <div>
+      <SEO title="Cookies Policy" description="Cookies and LocalStorage usage on Zwanski Tech demo site." image={'/logo.svg'} url={'https://zwanski01.github.io/zwanski-store/cookies-policy'} />
       <h1 className='text-3xl font-bold mb-4'>Cookies Policy</h1>
       <p className='text-gray-700'>This demo uses browser LocalStorage to persist the shopping cart and demo messages. The site does not set tracking cookies by default.</p>
 
