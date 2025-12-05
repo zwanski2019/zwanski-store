@@ -5,7 +5,7 @@
   "description": "Zwanski Tech - Static eCommerce storefront (Vite + React + TypeScript + Tailwind) - GitHub Pages ready",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && vite build --outDir dist",
+    "build": "vite build",
     "preview": "vite preview --port 5173",
     "format": "prettier --write .",
     "deploy": "npm run build && cp -f dist/index.html dist/404.html && npx gh-pages -d dist",
