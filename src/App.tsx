@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { HashRouter, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import Shop from './pages/Shop'
 import ProductPage from './pages/Product'
@@ -12,16 +12,20 @@ import Privacy from './pages/Privacy'
 import Terms from './pages/Terms'
 import Services from './pages/Services'
 import FAQ from './pages/FAQ'
+import Blog from './pages/Blog'
+import Films from './pages/Films'
 import RefundPolicy from './pages/RefundPolicy'
 import CookiesPolicy from './pages/CookiesPolicy'
 import ShippingPolicy from './pages/ShippingPolicy'
+import AcceptableUse from './pages/legal/AcceptableUse'
+import DataProtection from './pages/legal/DataProtection'
 import Header from './components/Header'
 import Footer from './components/Footer'
 
 export default function App(){
   return (
-    <BrowserRouter>
-      <div className='min-h-screen flex flex-col'>
+    <HashRouter>
+      <div className='min-h-screen flex flex-col bg-[#F8FAFC]'>
         <Header />
         <main className='flex-grow container mx-auto px-4 py-8'>
           <Routes>
@@ -30,6 +34,8 @@ export default function App(){
             <Route path='/product/:id' element={<ProductPage/>} />
             <Route path='/services' element={<Services/>} />
             <Route path='/faq' element={<FAQ/>} />
+            <Route path='/blog' element={<Blog/>} />
+            <Route path='/films' element={<Films/>} />
             <Route path='/about' element={<About/>} />
             <Route path='/contact' element={<Contact/>} />
             <Route path='/academy' element={<Academy/>} />
@@ -40,10 +46,12 @@ export default function App(){
             <Route path='/refund-policy' element={<RefundPolicy/>} />
             <Route path='/cookies-policy' element={<CookiesPolicy/>} />
             <Route path='/shipping-policy' element={<ShippingPolicy/>} />
+            <Route path='/legal/acceptable-use' element={<AcceptableUse/>} />
+            <Route path='/legal/data-protection' element={<DataProtection/>} />
           </Routes>
         </main>
         <Footer />
       </div>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
