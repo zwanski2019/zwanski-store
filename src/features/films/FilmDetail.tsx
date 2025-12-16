@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import FilmPlayer from './FilmPlayer'
 import type { FilmItem } from './types'
 
+const API_BASE_URL = (import.meta as any).env?.VITE_API_BASE_URL || ''
+
 type Props = {
   filmId: string
 }
@@ -19,7 +21,7 @@ export default function FilmDetail({ filmId }: Props) {
       setLoading(true)
       setError(null)
       try {
-        const res = await fetch(`/api/movie/${filmId}`)
+        const res = await fetch(`${API_BASE_URL}/api/movie/${filmId}`)
         if (!res.ok) throw new Error('Could not load film')
         const data = (await res.json()) as MovieResponse
         if (mounted) setFilm(data.item)

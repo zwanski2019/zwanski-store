@@ -48,6 +48,89 @@ function seedFilms(): FilmItem[] {
       licenseLabel: 'Public Domain (US)',
       tags: ['public-domain', 'classic', 'thriller'],
     },
+    {
+      id: 'his-girl-friday-1940',
+      title: 'His Girl Friday',
+      year: '1940',
+      synopsis:
+        'Fast-talking newspaper editor tries to win back his star reporter ex-wife before she remarries.',
+      poster: 'https://archive.org/services/img/his_girl_friday/his_girl_friday',
+      genres: ['Comedy', 'Romance'],
+      sources: [
+        {
+          type: 'internet-archive',
+          url: 'https://archive.org/embed/his_girl_friday',
+          license: 'public-domain',
+          licenseLabel: 'Public Domain (US)',
+        },
+      ],
+      license: 'public-domain',
+      licenseLabel: 'Public Domain (US)',
+      tags: ['public-domain', 'classic', 'comedy'],
+    },
+    {
+      id: 'house-on-haunted-hill-1959',
+      title: 'House on Haunted Hill',
+      year: '1959',
+      synopsis:
+        'Vincent Price hosts a haunted house party where guests must survive the night for a cash prize.',
+      poster:
+        'https://archive.org/services/img/House_on_Haunted_Hill/House_on_Haunted_Hill',
+      genres: ['Horror', 'Classic'],
+      sources: [
+        {
+          type: 'internet-archive',
+          url: 'https://archive.org/embed/House_on_Haunted_Hill',
+          license: 'public-domain',
+          licenseLabel: 'Public Domain (US)',
+        },
+      ],
+      license: 'public-domain',
+      licenseLabel: 'Public Domain (US)',
+      tags: ['public-domain', 'classic', 'horror'],
+    },
+    {
+      id: 'plan-9-from-outer-space-1959',
+      title: 'Plan 9 from Outer Space',
+      year: '1959',
+      synopsis:
+        'Infamous cult classic where aliens resurrect the dead to stop humans from creating a doomsday weapon.',
+      poster:
+        'https://archive.org/services/img/Plan_9_from_Outer_Space_1959/Plan_9_from_Outer_Space_1959',
+      genres: ['Sci-Fi', 'Cult'],
+      sources: [
+        {
+          type: 'internet-archive',
+          url: 'https://archive.org/embed/Plan_9_from_Outer_Space_1959',
+          license: 'public-domain',
+          licenseLabel: 'Public Domain (US)',
+        },
+      ],
+      license: 'public-domain',
+      licenseLabel: 'Public Domain (US)',
+      tags: ['public-domain', 'classic', 'sci-fi'],
+    },
+    {
+      id: 'the-brain-that-wouldnt-die-1962',
+      title: "The Brain That Wouldn't Die",
+      year: '1962',
+      synopsis:
+        'A scientist keeps his fiancée’s head alive while searching for a new body in seedy nightclubs.',
+      poster:
+        'https://archive.org/services/img/TheBrainThatWouldntDie/TheBrainThatWouldntDie',
+      genres: ['Horror', 'Sci-Fi'],
+      sources: [
+        {
+          type: 'internet-archive',
+          url: 'https://archive.org/embed/TheBrainThatWouldntDie',
+          license: 'public-domain',
+          licenseLabel: 'Public Domain (US)',
+        },
+      ],
+      license: 'public-domain',
+      licenseLabel: 'Public Domain (US)',
+      tags: ['public-domain', 'classic', 'horror'],
+    },
   ]
 }
 
@@ -74,11 +157,8 @@ export default function Films() {
                 onClick={() => setSelected(films[0]?.id || null)}
                 className='pill bg-[#ff6b35] hover:bg-[#ff5722] text-white font-semibold hover:-translate-y-0.5 transition shadow-lg'
               >
-                Start with a classic
+                Start watching now
               </button>
-              <a href='https://developer.themoviedb.org/reference/search-movie' target='_blank' rel='noreferrer' className='pill border-2 border-[#e2e8f0] text-[#0F172A] hover:bg-[#f1f5f9] hover:text-[#0F172A] hover:border-[#ff6b35] transition'>
-                TMDb metadata usage
-              </a>
             </div>
           </div>
           <div className='glass rounded-2xl p-5 border border-[#e2e8f0] shadow-2xl'>

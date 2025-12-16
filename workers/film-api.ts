@@ -1,9 +1,6 @@
 export interface Env {
   FILM_CACHE: KVNamespace
   R2_ASSETS: R2Bucket
-  TMDB_API_KEY: string
-  YOUTUBE_API_KEY: string
-  OMDB_API_KEY?: string
   ADMIN_TOKEN: string
   ORIGIN_ALLOWED?: string
   BLOGGER_API_KEY?: string
@@ -73,49 +70,6 @@ async function cachedFetch(
   return fresh
 }
 
-async function fetchTmdb(query: string, env: Env) {
-  const url = new URL('https://api.themoviedb.org/3/search/movie')
-  url.searchParams.set('query', query)
-  url.searchParams.set('include_adult', 'false')
-  url.searchParams.set('language', 'en')
-  return cachedFetch(env.FILM_CACHE, `tmdb:${query}`, async () => {
-    const res = await fetch(url.toString(), {
-      headers: { Authorization: `Bearer ${env.TMDB_API_KEY}` },
-    })
-    if (!res.ok) throw new Error('TMDb error')
-    const data = await res.json()
-    return data?.results?.slice(0, 10) || []
-  })
-}
-
-async function fetchOmdb(id: string, env: Env) {
-  if (!env.OMDB_API_KEY) return null
-  const url = new URL('https://www.omdbapi.com/')
-  url.searchParams.set('apikey', env.OMDB_API_KEY)
-  url.searchParams.set('i', id)
-  return cachedFetch(env.FILM_CACHE, `omdb:${id}`, async () => {
-    const res = await fetch(url.toString())
-    if (!res.ok) throw new Error('OMDb error')
-    return res.json()
-  })
-}
-
-async function searchCreativeCommons(query: string, env: Env) {
-  const url = new URL('https://www.googleapis.com/youtube/v3/search')
-  url.searchParams.set('part', 'snippet')
-  url.searchParams.set('q', query)
-  url.searchParams.set('type', 'video')
-  url.searchParams.set('videoLicense', 'creativeCommon')
-  url.searchParams.set('maxResults', '5')
-  url.searchParams.set('key', env.YOUTUBE_API_KEY)
-  return cachedFetch(env.FILM_CACHE, `yt:${query}`, async () => {
-    const res = await fetch(url.toString())
-    if (!res.ok) throw new Error('YouTube error')
-    const data = await res.json()
-    return data?.items || []
-  })
-}
-
 async function searchInternetArchive(query: string) {
   const url = new URL('https://archive.org/advancedsearch.php')
   url.searchParams.set('q', `${query} AND mediatype:(movies)`)
@@ -128,6 +82,8 @@ async function searchInternetArchive(query: string) {
 }
 
 function buildSeed(): FilmItem[] {
+  // Curated public-domain / clearly licensed classics from Internet Archive.
+  // These are embeds only; no external API keys required.
   return [
     {
       id: 'night-of-the-living-dead-1968',
@@ -170,22 +126,97 @@ function buildSeed(): FilmItem[] {
       licenseLabel: 'Public Domain (US)',
       tags: ['public-domain', 'classic', 'thriller'],
     },
+    {
+      id: 'his-girl-friday-1940',
+      title: 'His Girl Friday',
+      year: '1940',
+      synopsis:
+        'Fast-talking newspaper editor tries to win back his star reporter ex-wife before she remarries.',
+      poster: 'https://archive.org/services/img/his_girl_friday/his_girl_friday',
+      genres: ['Comedy', 'Romance'],
+      sources: [
+        {
+          type: 'internet-archive',
+          url: 'https://archive.org/embed/his_girl_friday',
+          license: 'public-domain',
+          licenseLabel: 'Public Domain (US)',
+        },
+      ],
+      license: 'public-domain',
+      licenseLabel: 'Public Domain (US)',
+      tags: ['public-domain', 'classic', 'comedy'],
+    },
+    {
+      id: 'house-on-haunted-hill-1959',
+      title: 'House on Haunted Hill',
+      year: '1959',
+      synopsis:
+        'Vincent Price hosts a haunted house party where guests must survive the night for a cash prize.',
+      poster:
+        'https://archive.org/services/img/House_on_Haunted_Hill/House_on_Haunted_Hill',
+      genres: ['Horror', 'Classic'],
+      sources: [
+        {
+          type: 'internet-archive',
+          url: 'https://archive.org/embed/House_on_Haunted_Hill',
+          license: 'public-domain',
+          licenseLabel: 'Public Domain (US)',
+        },
+      ],
+      license: 'public-domain',
+      licenseLabel: 'Public Domain (US)',
+      tags: ['public-domain', 'classic', 'horror'],
+    },
+    {
+      id: 'plan-9-from-outer-space-1959',
+      title: 'Plan 9 from Outer Space',
+      year: '1959',
+      synopsis:
+        'Infamous cult classic where aliens resurrect the dead to stop humans from creating a doomsday weapon.',
+      poster:
+        'https://archive.org/services/img/Plan_9_from_Outer_Space_1959/Plan_9_from_Outer_Space_1959',
+      genres: ['Sci-Fi', 'Cult'],
+      sources: [
+        {
+          type: 'internet-archive',
+          url: 'https://archive.org/embed/Plan_9_from_Outer_Space_1959',
+          license: 'public-domain',
+          licenseLabel: 'Public Domain (US)',
+        },
+      ],
+      license: 'public-domain',
+      licenseLabel: 'Public Domain (US)',
+      tags: ['public-domain', 'classic', 'sci-fi'],
+    },
+    {
+      id: 'the-brain-that-wouldnt-die-1962',
+      title: "The Brain That Wouldn't Die",
+      year: '1962',
+      synopsis:
+        'A scientist keeps his fiancée’s head alive while searching for a new body in seedy nightclubs.',
+      poster:
+        'https://archive.org/services/img/TheBrainThatWouldntDie/TheBrainThatWouldntDie',
+      genres: ['Horror', 'Sci-Fi'],
+      sources: [
+        {
+          type: 'internet-archive',
+          url: 'https://archive.org/embed/TheBrainThatWouldntDie',
+          license: 'public-domain',
+          licenseLabel: 'Public Domain (US)',
+        },
+      ],
+      license: 'public-domain',
+      licenseLabel: 'Public Domain (US)',
+      tags: ['public-domain', 'classic', 'horror'],
+    },
   ]
 }
 
 async function handleSearch(req: Request, env: Env) {
   const query = new URL(req.url).searchParams.get('q')
   if (!query) return json({ error: 'Missing q' }, { status: 400 })
-  const [tmdb, yt, ia] = await Promise.all([
-    fetchTmdb(query, env),
-    searchCreativeCommons(query, env),
-    searchInternetArchive(query),
-  ])
   return json({
     query,
-    tmdb,
-    youtubeCC: yt,
-    internetArchive: ia,
     seed: buildSeed().filter((f) =>
       f.title.toLowerCase().includes(query.toLowerCase())
     ),
@@ -194,9 +225,8 @@ async function handleSearch(req: Request, env: Env) {
 
 async function handleMovie(req: Request, env: Env, id: string) {
   const seed = buildSeed().find((f) => f.id === id)
-  const data = seed || (await fetchOmdb(id, env))
-  if (!data) return notFound()
-  return json({ item: data })
+  if (!seed) return notFound()
+  return json({ item: seed })
 }
 
 async function handleUpload(req: Request, env: Env) {

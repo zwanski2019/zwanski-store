@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import type { FilmItem } from './types'
 
+const API_BASE_URL = (import.meta as any).env?.VITE_API_BASE_URL || ''
+
 type Props = {
   onSelect: (id: string) => void
 }
@@ -20,7 +22,7 @@ export default function FilmSearch({ onSelect }: Props) {
     setLoading(true)
     setError(null)
     try {
-      const res = await fetch(`/api/search?q=${encodeURIComponent(query)}`)
+      const res = await fetch(`${API_BASE_URL}/api/search?q=${encodeURIComponent(query)}`)
       if (!res.ok) throw new Error('Search failed')
       const data = (await res.json()) as SearchResult
       setResults(data)
