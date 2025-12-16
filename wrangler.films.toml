@@ -17,8 +17,6 @@ YOUTUBE_API_KEY = ""
 OMDB_API_KEY = ""
 ADMIN_TOKEN = "change-me"
 ORIGIN_ALLOWED = "*"
-BLOGGER_API_KEY = "AIzaSyBYx2d0KxsRHn6KoXcRXH7dFBsZeqxVnjY"
-BLOGGER_BLOG_ID = "1865195035349515836"
 
 [observability]
 enabled = true

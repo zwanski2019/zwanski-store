@@ -224,8 +224,15 @@ async function handleTakedown(req: Request, env: Env) {
 }
 
 async function handleBlogPosts(req: Request, env: Env) {
-  const apiKey = env.BLOGGER_API_KEY || 'AIzaSyBYx2d0KxsRHn6KoXcRXH7dFBsZeqxVnjY'
-  const blogId = env.BLOGGER_BLOG_ID || '1865195035349515836'
+  if (!env.BLOGGER_API_KEY || !env.BLOGGER_BLOG_ID) {
+    return json(
+      { error: 'Blogger integration is not configured on this environment' },
+      { status: 500 }
+    )
+  }
+
+  const apiKey = env.BLOGGER_API_KEY
+  const blogId = env.BLOGGER_BLOG_ID
   const url = new URL(req.url)
   const maxResults = parseInt(url.searchParams.get('maxResults') || '12')
   
