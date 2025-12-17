@@ -20,6 +20,7 @@ import ShippingPolicy from './pages/ShippingPolicy'
 import AcceptableUse from './pages/legal/AcceptableUse'
 import DataProtection from './pages/legal/DataProtection'
 import CybersecurityDemo from './pages/CybersecurityDemo'
+import PermissionDemo from './pages/PermissionDemo'
 import Header from './components/Header'
 import Footer from './components/Footer'
 
@@ -52,6 +53,7 @@ function AppContent(){
           <Route path='/legal/acceptable-use' element={<AcceptableUse/>} />
           <Route path='/legal/data-protection' element={<DataProtection/>} />
           <Route path='/cybersecurity-demo' element={<CybersecurityDemo/>} />
+          <Route path='/permission-demo' element={<PermissionDemo/>} />
         </Routes>
       </main>
       {!isCybersecurityDemo && <Footer />}

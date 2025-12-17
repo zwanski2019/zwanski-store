@@ -12,6 +12,11 @@ const links = [
   { to: '/faq', label: 'FAQ' },
 ]
 
+const demoLinks = [
+  { to: '/cybersecurity-demo', label: 'Cybersecurity Demo' },
+  { to: '/permission-demo', label: 'Permission Trap Demo' },
+]
+
 const legalLinks = [
   { to: '/privacy', label: 'Privacy Policy' },
   { to: '/terms', label: 'Terms' },
@@ -67,6 +72,32 @@ export default function Header(){
               ? 'bg-[#ff6b35] text-white font-semibold shadow-lg'
               : 'text-[#cbd5e1] hover:text-white hover:bg-[#1E293B]'
           }`}>Contact</Link>
+          
+          {/* Security Demos Dropdown */}
+          <div className='relative group'>
+            <button className={`px-3 py-2 rounded-lg transition ${
+              demoLinks.some(link => pathname === link.to)
+                ? 'bg-[#ff6b35] text-white font-semibold shadow-lg'
+                : 'text-[#cbd5e1] hover:text-white hover:bg-[#1E293B]'
+            }`}>
+              Security Demos <span className='text-xs'>▼</span>
+            </button>
+            <div className='absolute left-0 mt-1 w-56 bg-[#1E293B] border border-[#334155] rounded-lg shadow-xl z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200'>
+              {demoLinks.map(link => (
+                <Link
+                  key={link.to}
+                  to={link.to}
+                  className={`block px-4 py-2 text-sm transition ${
+                    pathname === link.to
+                      ? 'bg-[#ff6b35] text-white font-semibold'
+                      : 'text-[#cbd5e1] hover:bg-[#334155] hover:text-white'
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </div>
           
           {/* Legal Dropdown */}
           <div className='relative' onMouseEnter={() => setLegalOpen(true)} onMouseLeave={() => setLegalOpen(false)}>
@@ -153,6 +184,25 @@ export default function Header(){
           >
             Contact
           </Link>
+          
+          {/* Security Demos Section in Mobile */}
+          <div className='pt-2 border-t border-[#1E293B]'>
+            <div className='px-3 py-2 text-xs text-[#94a3b8] uppercase tracking-wider font-semibold'>Security Demos</div>
+            {demoLinks.map(link => (
+              <Link
+                key={link.to}
+                to={link.to}
+                className={`block px-3 py-2 rounded-lg transition text-sm ${
+                  pathname === link.to
+                    ? 'bg-[#ff6b35] text-white font-semibold'
+                    : 'hover:bg-[#1E293B] text-white'
+                }`}
+                onClick={() => setOpen(false)}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
           
           {/* Legal Section in Mobile */}
           <div className='pt-2 border-t border-[#1E293B]'>

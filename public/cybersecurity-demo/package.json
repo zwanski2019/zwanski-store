@@ -1,0 +1,24 @@
+{
+  "name": "permission-trap-demo",
+  "version": "1.0.0",
+  "description": "Permission is the New Perimeter - A Live Demonstration of Browser Permission Abuse",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx serve .",
+    "deploy": "wrangler deploy",
+    "preview": "wrangler pages dev ."
+  },
+  "keywords": [
+    "cybersecurity",
+    "education",
+    "browser-security",
+    "permissions",
+    "privacy",
+    "security-awareness"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "wrangler": "^3.0.0"
+  }
+}
