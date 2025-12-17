@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Permission is the New Perimeter - A Live Demonstration of Browser Permission Abuse">
+    <title>Permission is the New Perimeter | Browser Security Demo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- HTTPS Warning -->
+    <div id="https-warning" class="warning-banner">
+        ⚠️ This demo requires HTTPS for permission APIs to work. Please use a secure connection.
+    </div>
+
+    <!-- Phase 1: Landing Page -->
+    <div id="phase-intro" class="phase active">
+        <div class="container">
+            <header class="intro-header">
+                <h1 class="main-title">Permission is the New Perimeter</h1>
+                <p class="subtitle">A Live Demonstration of Browser Permission Abuse</p>
+                <p class="credit">Educational Security Demonstration</p>
+            </header>
+
+            <section class="intro-content">
+                <h2>The Modern Attack Surface</h2>
+                <p>
+                    Modern web browsers expose dozens of powerful APIs that enable rich user experiences:
+                    geolocation for maps, camera for video calls, microphone for voice assistants, 
+                    notifications for alerts, and many more.
+                </p>
+                <p>
+                    However, these same APIs have become prime targets for attackers. Real-world campaigns 
+                    like <strong>MageCart</strong> (credit card skimming), <strong>Pegasus web exploits</strong> 
+                    (zero-click surveillance), and various <strong>ransomware-as-a-service</strong> operations 
+                    abuse browser permissions to:
+                </p>
+                <ul class="threat-list">
+                    <li>Track users' physical locations in real-time</li>
+                    <li>Activate cameras and microphones without consent</li>
+                    <li>Spam notifications with phishing links</li>
+                    <li>Read clipboard contents (passwords, crypto addresses)</li>
+                    <li>Monitor device motion and orientation</li>
+                    <li>Access connected USB devices</li>
+                    <li>Drain battery through background processing</li>
+                </ul>
+
+                <h2>What This Demonstration Shows</h2>
+                <p>
+                    This controlled simulation will request multiple sensitive browser permissions in sequence, 
+                    mimicking how a real malicious website would attempt to compromise your device. You will 
+                    see realistic attack patterns, terminal-style logs, and visual effects designed to 
+                    demonstrate the severity of permission-based attacks.
+                </p>
+                <p class="highlight-box">
+                    <strong>Important:</strong> This is 100% safe and educational. No data is recorded, 
+                    transmitted, or stored. All media streams are immediately terminated after permission 
+                    requests. This demo runs entirely in your browser.
+                </p>
+            </section>
+
+            <section class="consent-section">
+                <div class="consent-box">
+                    <h2>Informed Consent</h2>
+                    <p class="consent-text">
+                        This is a controlled, educational security demonstration. By proceeding, you acknowledge:
+                    </p>
+                    <ul class="consent-list">
+                        <li>This simulation will request multiple sensitive browser permissions (geolocation, camera, microphone, notifications, clipboard, fullscreen, USB, motion sensors, etc.)</li>
+                        <li>No data is recorded, transmitted, or stored — all streams are immediately terminated</li>
+                        <li>This is for educational purposes only</li>
+                        <li>You are voluntarily participating and may stop at any time</li>
+                        <li>You are using a secure (HTTPS) connection</li>
+                        <li>You are 18+ years of age or have parental consent</li>
+                    </ul>
+                    <label class="consent-checkbox">
+                        <input type="checkbox" id="consent-checkbox">
+                        <span>I understand and consent to participate in this demonstration</span>
+                    </label>
+                    <button id="begin-btn" class="begin-button" disabled>
+                        BEGIN DEMONSTRATION
+                    </button>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Phase 2: Live Demonstration -->
+    <div id="phase-demo" class="phase">
+        <canvas id="matrix-canvas"></canvas>
+        <div class="demo-container">
+            <div class="demo-header">
+                <h2 class="demo-title">LIVE ATTACK SIMULATION</h2>
+                <button id="exit-btn" class="exit-button">EXIT DEMO</button>
+            </div>
+            
+            <div class="terminal-container">
+                <div id="terminal" class="terminal">
+                    <div class="terminal-line">Initializing attack sequence...</div>
+                </div>
+            </div>
+
+            <div id="progress-section" class="progress-section">
+                <div class="progress-bar-container">
+                    <div id="progress-bar" class="progress-bar"></div>
+                </div>
+                <div id="progress-text" class="progress-text">0%</div>
+            </div>
+
+            <div id="data-section" class="data-section">
+                <h3>EXTRACTED DATA:</h3>
+                <pre id="extracted-data" class="data-display"></pre>
+            </div>
+
+            <div id="warning-overlay" class="warning-overlay hidden">
+                <div class="warning-content">
+                    <h2>⚠️ SYSTEM COMPROMISED ⚠️</h2>
+                    <p id="warning-text"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Phase 3: Debrief -->
+    <div id="phase-debrief" class="phase">
+        <div class="container">
+            <header class="debrief-header">
+                <h1 class="debrief-title">This Was a Controlled Simulation</h1>
+                <p class="debrief-subtitle">You are safe. No data was compromised.</p>
+            </header>
+
+            <section class="debrief-content">
+                <h2>What You Experienced</h2>
+                <p>
+                    You just witnessed a realistic simulation of how malicious websites abuse browser permissions. 
+                    Each permission request you saw represents a real attack vector used by cybercriminals, 
+                    nation-state actors, and surveillance operations.
+                </p>
+
+                <div class="permission-breakdown">
+                    <h3>Permission Breakdown & Real-World Abuse</h3>
+                    
+                    <div class="permission-item">
+                        <h4>📍 Geolocation</h4>
+                        <p><strong>Real Attack:</strong> Track users' physical locations, build movement profiles, 
+                        identify home/work addresses, enable physical surveillance.</p>
+                        <p><strong>Example:</strong> Fake delivery tracking sites requesting location to determine 
+                        when homes are empty.</p>
+                    </div>
+
+                    <div class="permission-item">
+                        <h4>📷 Camera & Microphone</h4>
+                        <p><strong>Real Attack:</strong> Activate webcams and microphones without consent, 
+                        record private moments, blackmail victims, corporate espionage.</p>
+                        <p><strong>Example:</strong> Pegasus spyware uses zero-click exploits to activate cameras 
+                        on compromised devices.</p>
+                    </div>
+
+                    <div class="permission-item">
+                        <h4>🔔 Notifications</h4>
+                        <p><strong>Real Attack:</strong> Spam users with phishing links, fake security alerts, 
+                        cryptocurrency scams, persistent malware delivery.</p>
+                        <p><strong>Example:</strong> Fake "Your computer is infected" notifications leading to 
+                        tech support scams.</p>
+                    </div>
+
+                    <div class="permission-item">
+                        <h4>📋 Clipboard</h4>
+                        <p><strong>Real Attack:</strong> Steal passwords, cryptocurrency addresses, sensitive 
+                        text copied by users, replace crypto addresses with attacker-controlled ones.</p>
+                        <p><strong>Example:</strong> Clipboard hijackers replace Bitcoin addresses in clipboard 
+                        with attacker addresses, stealing funds.</p>
+                    </div>
+
+                    <div class="permission-item">
+                        <h4>🖥️ Fullscreen</h4>
+                        <p><strong>Real Attack:</strong> Hide browser UI, prevent users from seeing real URLs, 
+                        create fake login overlays, lock users into malicious interfaces.</p>
+                        <p><strong>Example:</strong> Fake Windows update screens in fullscreen mode tricking 
+                        users into downloading malware.</p>
+                    </div>
+
+                    <div class="permission-item">
+                        <h4>📱 Motion & Orientation</h4>
+                        <p><strong>Real Attack:</strong> Infer keystrokes from device tilt, detect user activity 
+                        patterns, build behavioral profiles.</p>
+                        <p><strong>Example:</strong> Academic research has shown motion sensors can infer 
+                        PIN entry patterns.</p>
+                    </div>
+
+                    <div class="permission-item">
+                        <h4>🔌 USB Devices</h4>
+                        <p><strong>Real Attack:</strong> Access connected USB devices, potentially exploit 
+                        vulnerabilities in USB drivers, exfiltrate data from storage devices.</p>
+                        <p><strong>Example:</strong> Advanced persistent threats (APTs) probing for USB 
+                        storage devices to steal sensitive files.</p>
+                    </div>
+
+                    <div class="permission-item">
+                        <h4>🔋 Battery Status</h4>
+                        <p><strong>Real Attack:</strong> Track user activity patterns based on charging behavior, 
+                        fingerprint devices, infer user location (charging patterns correlate with locations).</p>
+                        <p><strong>Example:</strong> Research has shown battery API can be used for cross-site 
+                        tracking and user profiling.</p>
+                    </div>
+                </div>
+
+                <h2>How to Protect Yourself</h2>
+                <div class="protection-tips">
+                    <h3>Browser Hardening</h3>
+                    <ul>
+                        <li><strong>Review permissions regularly:</strong> Check browser settings → Privacy → Site Settings → Permissions</li>
+                        <li><strong>Use permission prompts carefully:</strong> Only grant permissions to trusted sites</li>
+                        <li><strong>Block third-party permissions:</strong> Configure browser to block permissions by default</li>
+                        <li><strong>Use HTTPS only:</strong> Never grant permissions on HTTP sites</li>
+                    </ul>
+
+                    <h3>Browser Extensions</h3>
+                    <ul>
+                        <li><strong>uBlock Origin:</strong> Advanced ad blocker that can block permission prompts</li>
+                        <li><strong>Privacy Badger:</strong> Blocks tracking and can prevent permission abuse</li>
+                        <li><strong>HTTPS Everywhere:</strong> Forces HTTPS connections</li>
+                        <li><strong>NoScript:</strong> Blocks JavaScript execution (advanced users)</li>
+                    </ul>
+
+                    <h3>Best Practices</h3>
+                    <ul>
+                        <li>Question every permission request — ask "why does this site need this?"</li>
+                        <li>When in doubt, deny permissions — you can always grant them later</li>
+                        <li>Use separate browsers for different activities (work vs. personal)</li>
+                        <li>Keep browsers updated — security patches are critical</li>
+                        <li>Use privacy-focused browsers (Firefox, Brave) with stricter defaults</li>
+                        <li>Regularly audit and revoke unused permissions</li>
+                    </ul>
+                </div>
+
+                <h2>Additional Resources</h2>
+                <div class="resources">
+                    <ul>
+                        <li><a href="https://www.eff.org/" target="_blank">Electronic Frontier Foundation (EFF)</a> — Digital privacy advocacy</li>
+                        <li><a href="https://foundation.mozilla.org/" target="_blank">Mozilla Foundation</a> — Privacy and security resources</li>
+                        <li><a href="https://owasp.org/" target="_blank">OWASP</a> — Web application security</li>
+                        <li><a href="https://haveibeenpwned.com/" target="_blank">Have I Been Pwned</a> — Check if your data has been breached</li>
+                        <li><a href="https://www.cisa.gov/cybersecurity-awareness-month" target="_blank">CISA Cybersecurity Awareness</a> — Government cybersecurity resources</li>
+                    </ul>
+                </div>
+
+                <div class="call-to-action">
+                    <h2>Take Action</h2>
+                    <p>Review your browser permissions right now:</p>
+                    <ul>
+                        <li><strong>Chrome:</strong> Settings → Privacy and security → Site Settings</li>
+                        <li><strong>Firefox:</strong> Preferences → Privacy & Security → Permissions</li>
+                        <li><strong>Safari:</strong> Preferences → Websites → [Permission Type]</li>
+                        <li><strong>Edge:</strong> Settings → Cookies and site permissions</li>
+                    </ul>
+                    <p class="final-message">
+                        Remember: <strong>Permission is the new perimeter.</strong> Every permission you grant 
+                        expands your attack surface. Be vigilant, be informed, stay secure.
+                    </p>
+                </div>
+
+                <div class="demo-controls">
+                    <button id="restart-btn" class="restart-button">Run Demo Again</button>
+                    <button id="exit-debrief-btn" class="exit-button">Close</button>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

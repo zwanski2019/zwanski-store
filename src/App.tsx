@@ -1,5 +1,5 @@
 import React from 'react'
-import { HashRouter, Routes, Route } from 'react-router-dom'
+import { HashRouter, Routes, Route, useLocation } from 'react-router-dom'
 import Home from './pages/Home'
 import Shop from './pages/Shop'
 import ProductPage from './pages/Product'
@@ -19,39 +19,50 @@ import CookiesPolicy from './pages/CookiesPolicy'
 import ShippingPolicy from './pages/ShippingPolicy'
 import AcceptableUse from './pages/legal/AcceptableUse'
 import DataProtection from './pages/legal/DataProtection'
+import CybersecurityDemo from './pages/CybersecurityDemo'
 import Header from './components/Header'
 import Footer from './components/Footer'
+
+function AppContent(){
+  const location = useLocation()
+  const isCybersecurityDemo = location.pathname === '/cybersecurity-demo'
+  
+  return (
+    <div className='min-h-screen flex flex-col bg-[#F8FAFC]'>
+      {!isCybersecurityDemo && <Header />}
+      <main className={isCybersecurityDemo ? 'flex-grow' : 'flex-grow container mx-auto px-4 py-8'}>
+        <Routes>
+          <Route path='/' element={<Home/>} />
+          <Route path='/shop' element={<Shop/>} />
+          <Route path='/product/:id' element={<ProductPage/>} />
+          <Route path='/services' element={<Services/>} />
+          <Route path='/faq' element={<FAQ/>} />
+          <Route path='/blog' element={<Blog/>} />
+          <Route path='/films' element={<Films/>} />
+          <Route path='/about' element={<About/>} />
+          <Route path='/contact' element={<Contact/>} />
+          <Route path='/academy' element={<Academy/>} />
+          <Route path='/cart' element={<Cart/>} />
+          <Route path='/checkout' element={<Checkout/>} />
+          <Route path='/privacy' element={<Privacy/>} />
+          <Route path='/terms' element={<Terms/>} />
+          <Route path='/refund-policy' element={<RefundPolicy/>} />
+          <Route path='/cookies-policy' element={<CookiesPolicy/>} />
+          <Route path='/shipping-policy' element={<ShippingPolicy/>} />
+          <Route path='/legal/acceptable-use' element={<AcceptableUse/>} />
+          <Route path='/legal/data-protection' element={<DataProtection/>} />
+          <Route path='/cybersecurity-demo' element={<CybersecurityDemo/>} />
+        </Routes>
+      </main>
+      {!isCybersecurityDemo && <Footer />}
+    </div>
+  )
+}
 
 export default function App(){
   return (
     <HashRouter>
-      <div className='min-h-screen flex flex-col bg-[#F8FAFC]'>
-        <Header />
-        <main className='flex-grow container mx-auto px-4 py-8'>
-          <Routes>
-            <Route path='/' element={<Home/>} />
-            <Route path='/shop' element={<Shop/>} />
-            <Route path='/product/:id' element={<ProductPage/>} />
-            <Route path='/services' element={<Services/>} />
-            <Route path='/faq' element={<FAQ/>} />
-            <Route path='/blog' element={<Blog/>} />
-            <Route path='/films' element={<Films/>} />
-            <Route path='/about' element={<About/>} />
-            <Route path='/contact' element={<Contact/>} />
-            <Route path='/academy' element={<Academy/>} />
-            <Route path='/cart' element={<Cart/>} />
-            <Route path='/checkout' element={<Checkout/>} />
-            <Route path='/privacy' element={<Privacy/>} />
-            <Route path='/terms' element={<Terms/>} />
-            <Route path='/refund-policy' element={<RefundPolicy/>} />
-            <Route path='/cookies-policy' element={<CookiesPolicy/>} />
-            <Route path='/shipping-policy' element={<ShippingPolicy/>} />
-            <Route path='/legal/acceptable-use' element={<AcceptableUse/>} />
-            <Route path='/legal/data-protection' element={<DataProtection/>} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
+      <AppContent />
     </HashRouter>
   )
 }
