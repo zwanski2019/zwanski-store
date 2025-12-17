@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        /* Fallback styles in case main CSS fails to load */
+        body { 
+            margin: 0; 
+            padding: 0; 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #0a0a0a;
+            color: #f0f0f0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .phase:not(.active) {
+            display: none;
+        }
+        .phase.active {
+            display: block;
+        }
+        h1, h2, h3 {
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Permission is the New Perimeter</title>
+    <meta name="description" content="A Live Demonstration of Browser Permission Abuse">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Diagnostic overlay -->
+    <div id="debug-overlay" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.9); color: #00ff00; font-family: monospace; padding: 20px; z-index: 9999; overflow: auto;">
+        <h1>Debug Information</h1>
+        <div id="debug-info">
+            <p>Loading debug information...</p>
+        </div>
+    </div>
+    <!-- Matrix Rain Background -->
+    <canvas id="matrix"></canvas>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Phase 1: Landing Page -->
+        <section id="landing" class="phase active">
+            <div class="content">
+                <h1>PERMISSION IS THE NEW PERIMETER</h1>
+                <h2>A Live Demonstration of Browser Permission Abuse</h2>
+                <div class="divider"></div>
+                <div class="description">
+                    <p>Modern web applications request an increasing number of sensitive permissions, creating new attack surfaces for exploitation.</p>
+                    <p>This demonstration showcases how seemingly harmless browser permissions can be weaponized in real-world attacks, from location tracking to device hijacking.</p>
+                </div>
+                <button id="start-demo" class="btn primary">BEGIN DEMONSTRATION</button>
+                <div class="footer">
+                    <p>Presented by <strong>Security Research Team</strong> – <span id="current-year"></span></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Phase 2: Consent Gate -->
+        <section id="consent" class="phase">
+            <div class="content">
+                <h2>IMPORTANT: CONSENT REQUIRED</h2>
+                <div class="consent-box">
+                    <p>This is a controlled, educational security demonstration designed to raise awareness about browser permission security.</p>
+                    
+                    <div class="consent-text">
+                        <p>By proceeding, you acknowledge and agree that:</p>
+                        <ul>
+                            <li>✓ This simulation will request multiple sensitive browser permissions</li>
+                            <li>✓ No data is recorded, transmitted, or stored — all streams are immediately terminated</li>
+                            <li>✓ This is for educational purposes only</li>
+                            <li>✓ You are voluntarily participating and may stop at any time</li>
+                            <li>✓ Connection: <span id="connection-status">Checking...</span></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="consent-checkbox">
+                        <input type="checkbox" id="consent-checkbox">
+                        <label for="consent-checkbox">I understand and consent to participate in this demonstration</label>
+                    </div>
+                    
+                    <div class="button-group">
+                        <button id="back-btn" class="btn secondary">GO BACK</button>
+                        <button id="begin-btn" class="btn primary" disabled>BEGIN DEMONSTRATION</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Phase 3: Live Demonstration -->
+        <section id="demo" class="phase">
+            <div class="terminal-container">
+                <div class="terminal-header">
+                    <div class="terminal-buttons">
+                        <span class="terminal-btn close"></span>
+                        <span class="terminal-btn minimize"></span>
+                        <span class="terminal-btn maximize"></span>
+                    </div>
+                    <div class="terminal-title">terminal@permission-demo:~</div>
+                </div>
+                <div class="terminal-content" id="terminal-output">
+                    <div class="terminal-line">> Initializing security demonstration...</div>
+                    <div class="terminal-line">> Loading attack simulation modules...</div>
+                    <div class="terminal-line">> Establishing secure connection...</div>
+                    <div class="terminal-line">> Ready to begin demonstration.</div>
+                    <div class="terminal-line prompt">> <span class="cursor">█</span></div>
+                </div>
+            </div>
+            <div class="demo-controls">
+                <button id="exit-demo" class="btn danger">EXIT DEMONSTRATION</button>
+            </div>
+        </section>
+
+        <!-- Phase 4: Debrief -->
+        <section id="debrief" class="phase">
+            <div class="content">
+                <h2>DEMONSTRATION COMPLETE</h2>
+                <div class="divider"></div>
+                
+                <div class="debrief-content">
+                    <div class="debrief-section">
+                        <h3>What Just Happened?</h3>
+                        <p>This demonstration simulated how modern web applications can request and potentially abuse browser permissions. In a real-world attack scenario, malicious actors could use these techniques to:</p>
+                        <ul>
+                            <li>Track your precise location in real-time</li>
+                            <li>Access your camera and microphone without your knowledge</li>
+                            <li>Read and modify your clipboard contents</li>
+                            <li>Monitor your device orientation and motion</li>
+                            <li>Request notification permissions to deliver malicious payloads</li>
+                        </ul>
+                    </div>
+
+                    <div class="debrief-section">
+                        <h3>How to Protect Yourself</h3>
+                        <div class="protection-tips">
+                            <div class="tip">
+                                <h4>Review Permissions</h4>
+                                <p>Regularly audit and manage website permissions in your browser settings.</p>
+                            </div>
+                            <div class="tip">
+                                <h4>Use Privacy Extensions</h4>
+                                <p>Consider using uBlock Origin, Privacy Badger, or similar tools to block unwanted tracking.</p>
+                            </div>
+                            <div class="tip">
+                                <h4>HTTPS Everywhere</h4>
+                                <p>Ensure you only use websites with valid SSL certificates.</p>
+                            </div>
+                            <div class="tip">
+                                <h4>Keep Software Updated</h4>
+                                <p>Regularly update your browser and operating system to patch known vulnerabilities.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button id="restart-demo" class="btn primary">RUN DEMO AGAIN</button>
+                    <button id="learn-more" class="btn secondary">LEARN MORE</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Audio elements -->
+    <audio id="typeSound" preload="auto">
+        <source src="data:audio/wav;base64,UklGRl9vT19XQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YU..." type="audio/wav">
+    </audio>
+    <audio id="alertSound" preload="auto">
+        <source src="data:audio/wav;base64,UklGRl9vT19XQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YU..." type="audio/wav">
+    </audio>
+
+    <!-- Diagnostic Script -->
+    <script>
+        // This script will run after the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            const debugInfo = document.getElementById('debug-info');
+            const debugData = {
+                'Page Loaded': new Date().toISOString(),
+                'JavaScript Enabled': true,
+                'CSS Loaded': document.styleSheets.length > 0,
+                'Scripts Loaded': document.scripts.length > 0,
+                'Screen Size': `${window.innerWidth}x${window.innerHeight}`,
+                'User Agent': navigator.userAgent,
+                'Local Storage': typeof(Storage) !== 'undefined' ? 'Available' : 'Not Available',
+                'Session Storage': typeof(sessionStorage) !== 'undefined' ? 'Available' : 'Not Available'
+            };
+
+            // Display debug info
+            let debugHTML = '<table style="width:100%; border-collapse: collapse;">';
+            for (const [key, value] of Object.entries(debugData)) {
+                debugHTML += `
+                    <tr style="border-bottom: 1px solid #333;">
+                        <td style="padding: 8px; text-align: left;"><strong>${key}:</strong></td>
+                        <td style="padding: 8px;">${value}</td>
+                    </tr>`;
+            }
+            debugHTML += '</table>';
+            
+            debugInfo.innerHTML = debugHTML;
+            
+            // Hide debug overlay after 10 seconds
+            setTimeout(() => {
+                const overlay = document.getElementById('debug-overlay');
+                if (overlay) {
+                    overlay.style.display = 'none';
+                }
+            }, 10000);
+        });
+    </script>
+    
+    <!-- Main Application Script -->
+    <script src="script.js" defer></script>
+</body>
+</html>
